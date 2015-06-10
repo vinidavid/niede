@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.23)  10 JUN 2015 12:21
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.23)  10 JUN 2015 13:56
 entering extended mode
-**C:/Users/Vinícius/Desktop/Graduacao/9*semestre/ES726/Relatorio.tex
-("C:/Users/Vinícius/Desktop/Graduacao/9 semestre/ES726/Relatorio.tex"
+**C:/Users/Vinícius/Desktop/Graduacao/9*semestre/ES726/niede/Relatorio.tex
+("C:/Users/Vinícius/Desktop/Graduacao/9 semestre/ES726/niede/Relatorio.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -264,7 +264,7 @@ LaTeX Info: Redefining \] on input line 2666.
 )
 \c@teorema=\count107
 
-("C:\Users\Vinícius\Desktop\Graduacao\9 semestre\ES726\Relatorio.aux")
+("C:\Users\Vinícius\Desktop\Graduacao\9 semestre\ES726\niede\Relatorio.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
@@ -299,44 +299,44 @@ Package caption Info: End \AtBeginDocument code.
 Non-PDF special ignored!
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-[2] ("C:\Users\Vinícius\Desktop\Graduacao\9 semestre\ES726\Relatorio.toc")
+("C:\Users\Vinícius\Desktop\Graduacao\9 semestre\ES726\niede\Relatorio.toc")
 \tf@toc=\write4
 
 [1]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 121.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 127.
 
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 121.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 127.
  [2
 
 ]
-("C:\Users\Vinícius\Desktop\Graduacao\9 semestre\ES726\Relatorio.aux") ) 
+("C:\Users\Vinícius\Desktop\Graduacao\9 semestre\ES726\niede\Relatorio.aux") )
+ 
 Here is how much of TeX's memory you used:
- 4079 strings out of 493921
- 59250 string characters out of 3144924
- 119324 words of memory out of 3000000
- 7290 multiletter control sequences out of 15000+200000
+ 4081 strings out of 493921
+ 59329 string characters out of 3144924
+ 120324 words of memory out of 3000000
+ 7292 multiletter control sequences out of 15000+200000
  15936 words of font info for 38 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 42i,5n,38p,375b,283s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\P
-rogramData\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk> <C:\Progr
-amData\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk> <C:\ProgramDa
-ta\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\ProgramData\M
-iKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk> <C:\ProgramData\MiKTe
-X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\ProgramData\MiKTeX\2.
-9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk> <C:\ProgramData\MiKTeX\2.9\fo
-nts\pk\ljfour\jknappen\ec\dpi600\ecti1440.pk> <C:\ProgramData\MiKTeX\2.9\fonts\
-pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\ProgramData\MiKTeX\2.9\fonts\pk\l
-jfour\jknappen\ec\dpi600\eccc1200.pk> <C:\ProgramData\MiKTeX\2.9\fonts\pk\ljfou
-r\jknappen\ec\dpi600\eccc2074.pk><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb>
-Output written on Relatorio.pdf (4 pages, 100883 bytes).
+ 42i,5n,38p,562b,283s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk> <C:
+\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk> <C:\Pro
+gramData\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Program
+Data\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\ProgramData
+\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk> <C:\ProgramData\MiK
+TeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk> <C:\ProgramData\MiKTeX\
+2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1440.pk> <C:\ProgramData\MiKTeX\2.9\
+fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\ProgramData\MiKTeX\2.9\font
+s\pk\ljfour\jknappen\ec\dpi600\eccc1200.pk> <C:\ProgramData\MiKTeX\2.9\fonts\pk
+\ljfour\jknappen\ec\dpi600\eccc2074.pk><C:/Program Files (x86)/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Relatorio.pdf (3 pages, 105155 bytes).
 PDF statistics:
- 285 PDF objects out of 1000 (max. 8388607)
+ 296 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
