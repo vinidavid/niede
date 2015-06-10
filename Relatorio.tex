@@ -15,6 +15,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{grafcet}
 %----------------------------
 
 
@@ -102,6 +103,32 @@
 \section {Tabela de designação}
 
 \section {Implementação do sistema}
+\subsection{Grafcet}
+\begin{tikzpicture}
+\EtapeInit[0,0]{0}
+\Transition[VX0]{0}
+\DivET{T0}{-5/L10,5/L20}
+\Etape[VL10]{10}
+\Transition[VX10]{10}
+\EtapeEncapsulante[VT10]{20}
+\Transition[VX20]{20}
+\SequenceEE[VL20]{11}{12}
+\ConvET[5]{T20}{X12}{br3}
+\Transition[br3]{3}
+\Etape[VT3]{4}
+\Transition[VX4]{4}
+\LienRetour[10]{T4}{X0}
+
+\begin{Encap}[nom]{7,-1.5}{20}{G2}
+\Etape[0,0]{200}
+\Transition[VX200]{200}
+\Etape[VT200]{201}
+\Transition[VX201]{201}
+\LienRetour{T201}{X200}
+\LienActivation{X200}
+\end{Encap}
+
+\end{tikzpicture}
 
 \section {Conclusões}
 
