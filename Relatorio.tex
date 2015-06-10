@@ -170,25 +170,38 @@ timer1 &  temporizador de entrada da cerveja verde & ??? \\
 \begin{tikzpicture}
 \EtapeInit[0,0]{0}
 \Transition[VX0]{0}
-\DivET{T0}{-5/L10,5/L20}
+\DivET{T0}{-7.5/L10,7.5/L20}
 \Etape[VL10]{10}
 \Transition[VX10]{10}
 \EtapeEncapsulante[VT10]{20}
-\Transition[VX20]{20}
-\SequenceEE[VL20]{11}{12}
-\ConvET[5]{T20}{X12}{br3}
-\Transition[br3]{3}
-\Etape[VT3]{4}
+\SequenceEE[VL20]{11}{21}
+\ConvET[7.5]{X20}{X21}{br3}
+\Transition[br3]{br3}
+\Etape[VTbr3]{4}
 \Transition[VX4]{4}
 \LienRetour[10]{T4}{X0}
+\ActionX{X10}{$V_cv$, inicia $timer_1$}
+\ActionActiv{X10}
+\ActionX{X20}{inicia $timer_2$}
+\ActionActiv{X20}
+\ActionX{X21}{$V_r$}
+\ActionX{X4}{$V_{cm}$,$V_{td}$}
+\Recept{T0}{$\overline{S_{bm}}\cdot Start$}
+\Recept{T10}{$timer_1 > 5s$}
+\Recept{Tbr3}{$timer_2 > 25s$}
+\Recept{T11}{$\overline{S_{bf}}$}
+\Recept{T4}{$\overline{S_{bm}}$}
 
-\begin{Encap}[nom]{7,-1.5}{20}{G2}
+\begin{Encap}[nom]{7.5,-1.5}{20}{Refrigeração}
 \Etape[0,0]{200}
 \Transition[VX200]{200}
-\Etape[VT200]{201}
-\Transition[VX201]{201}
-\LienRetour{T201}{X200}
+\Etape[VT200]{300}
+\Transition[VX300]{300}
+\LienRetour{T300}{X200}
 \LienActivation{X200}
+\ActionX{X300}{$V_r$}
+\Recept{T200}{$S_t \geq 5^\circ~C$}
+\Recept{T300}{$S_t \le -5^\circ~C$}
 \end{Encap}
 
 \end{tikzpicture}
