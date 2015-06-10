@@ -5,12 +5,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage[pdftex]{hyperref}
 \usepackage{epstopdf}
-\usepackage{etoolbox}
 \usepackage{psfrag}
 \usepackage{setspace}
 \usepackage{graphicx}
-\usepackage{epsfig}
-\usepackage{epstopdf}
 \usepackage{color}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -18,7 +15,6 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{tikz}
 %----------------------------
 
 
@@ -85,10 +81,16 @@
 	\section {Análise do Projeto}
 	\begin {itemize}
 	\item Modo Automático
+	\begin{par}
 	
-	\item Modo Homming
-	
+	O modo automático consiste na mudança de estado automática. Quando todas as condições necessárias para a mudança de estado se tornam verdadeiras e o modo automático está ativo a mudança de estado acontecerá, sendo assim, não sendo necessária a atuação humana. Este modo permite um processo mais rápido e mais barato por não necessitar de um funcionário presente para fazer as transições. Contudo poderá haver problemas caso a verificação para as condições estiver com problema, se os sensores, por exemplo, estiverem com problema o processo pode avançar mesmo não sendo o momento apropriado para tal.
+	\end{par}
 	\item Modo Passo a Passo
+	
+	O modo passo a passo é o oposto do modo automático, sendo assim necessário a atuação humana para a transição de estados. Com todas as condições de transição verdadeiras o processo apenas mudará de estado caso um botão no IHM (interface homem máquina) seja apertado manualmente. Caso 
+	
+	O valor do modo passo a passo é verificado em teste, já que o processo pode ser totaltmente controlado pelo engenheiro de qualidade, testando todas as transições e funcionalidade das entradas (sensores e timers) do sistema.
+	\item Modo Homming
 	
 	\item Parada de emergência
 	
