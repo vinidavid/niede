@@ -27,4 +27,4 @@
 *.log
 *.out
 *-converted-to*
-
+*.toc
