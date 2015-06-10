@@ -52,160 +52,145 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Descrição Técnica do Processo}
 	
-	\begin{par}
-		Este relatório consiste na descrição da solução encontrada para o problema da maturação e filtragem da produção de cerveja. O processo começa após a fermentação da cerveja verde que são mandados para os tanques de maturação (válvula VCV e timer1). No tanque a cerveja verde permanece entre 1h e 3h (timer2) com controle constante de sua temperatura, esta necessitando estar em 0ºC, ou no máximo entre -5 e 5ºC. Este controle de temperatura deve ser feito com base no acionamento do fluido refrigerante (VFR) e em um sensor de temperatura (ST).
-	\end{par}
+	Este relatório consiste na descrição da solução encontrada para o problema da maturação e filtragem da produção de cerveja. O processo começa após a fermentação da cerveja verde que é mandada para tanques de maturação como o da figura \ref{fig:maturador} (válvula $V_{cv}$ e $timer_1$). No tanque a cerveja verde permanece entre 1h e 3h ($timer2$) com controle constante de sua temperatura, esta necessitando estar em $0ºC$, ou no máximo entre $-5$ e $5ºC$. Este controle de temperatura deve ser feito com base no acionamento do fluido refrigerante ($V_{fr}$) e em um sensor de temperatura ($S_t$).
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics [width=4in]{tanque.png}
 		\caption {Tanque de maturação da cerveja verde.}
-		\label{fig:corrente}
+		\label{fig:maturador}
 	\end{figure}
 	
-	\begin{par}
-		Passado este tempo e com sucesso do controle de temperatura a cerveja verde torna-se cerveja madura e é desepeja na próxima etapa (válvula VCM). A etapa consiste em passar por um filtro com terra diatomácea (válvula VTD), que retira partículas desagradáveis à cerveja. 
-		
-		O resíduo do filtro deve ser descatado após o uso, o seu descarte é feito pela acionamento de uma válvula (VR) que dependerá de um sensor (SBF).
-		
-		
-		Tanto a vávula de despejo da cerveja maturada quanto a da terra diatomácea dependem do sensor de volume do tanque de maturação (SBM).
-	\end{par}
+	Passado este tempo e com sucesso do controle de temperatura a cerveja verde torna-se cerveja madura e é despeja na próxima etapa (válvula $V_{cm}$). A etapa consiste em passar por um filtro com terra diatomácea (válvula $V_{td}$), que retira partículas desagradáveis à cerveja, como o mostrado na figura \ref{fig:filtro}. 
+	
+	O resíduo do filtro deve ser descartado após o uso, o seu descarte é feito pela acionamento de uma válvula ($V_r$) que dependerá de um sensor ($S_{bf}$).
+	
+	
+	Tanto a válvula de despejo da cerveja maturada quanto a da terra diatomácea dependem do sensor de volume do tanque de maturação ($S_{bm}$).
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics [width=4in]{filtro.png}
-		\caption {Filtro da cerveja maturada.}
-		\label{fig:corrente}
+		\caption {Filtro da cerveja maturada}
+		\label{fig:filtro}
 	\end{figure}
 	
-	\begin{par}
-		Após a filtragem a cerveja é então destinada à próxima etapa da sua fabricação, sendo este não descrito por este trabalho.
-	\end{par}
-	
+	Após a filtragem a cerveja é então destinada à próxima etapa da sua fabricação, sendo esta não descrita por este trabalho.
 	
 	\section {Análise do Projeto}
-	\begin {itemize}
-	\item Modo Automático
-	\begin{par}
 	
+	\begin{figure}[H]
+		\centering
+		\label{fig:grafcet}
+		\begin{tikzpicture}
+			\EtapeInit[0,0]{0}
+			\Transition[VX0]{0}
+			\DivET{T0}{-7.5/L10,7.5/L20}
+			\Etape[VL10]{10}
+			\Transition[VX10]{10}
+			\EtapeEncapsulante[VT10]{20}
+			\SequenceEE[VL20]{11}{21}
+			\ConvET[7.5]{X20}{X21}{br3}
+			\Transition[br3]{br3}
+			\Etape[VTbr3]{4}
+			\Transition[VX4]{4}
+			\LienRetour[10]{T4}{X0}
+			\ActionX{X10}{$V_cv$, inicia $timer_1$}
+			\ActionActiv{X10}
+			\ActionX{X20}{inicia $timer_2$}
+			\ActionActiv{X20}
+			\ActionX{X21}{$V_r$}
+			\ActionX{X4}{$V_{cm}$,$V_{td}$}
+			\Recept{T0}{$\overline{S_{bm}}\cdot Start$}
+			\Recept{T10}{$timer_1 > 5s$}
+			\Recept{Tbr3}{$timer_2 > 25s$}
+			\Recept{T11}{$\overline{S_{bf}}$}
+			\Recept{T4}{$\overline{S_{bm}}$}
+			
+			\begin{Encap}[nom]{7.5,-1.5}{20}{Refrigeração}
+			\Etape[0,0]{200}
+			\Transition[VX200]{200}
+			\Etape[VT200]{300}
+			\Transition[VX300]{300}
+			\LienRetour{T300}{X200}
+			\LienActivation{X200}
+			\ActionX{X300}{$V_r$}
+			\Recept{T200}{$S_t \geq 5ºC$}
+			\Recept{T300}{$S_t \le -5ºC$}
+			\end{Encap}
+		
+		\end{tikzpicture}
+		\caption{Diagrama grafcet do projeto}
+	\end{figure}
+	
+	\subsection{Modo Automático}
 	O modo automático consiste na mudança de estado automática. Quando todas as condições necessárias para a mudança de estado se tornam verdadeiras e o modo automático está ativo a mudança de estado acontecerá, sendo assim, não sendo necessária a atuação humana. Este modo permite um processo mais rápido e mais barato por não necessitar de um funcionário presente para fazer as transições. Contudo poderá haver problemas caso a verificação para as condições estiver com problema, se os sensores, por exemplo, estiverem com problema o processo pode avançar mesmo não sendo o momento apropriado para tal.
-	\end{par}
 	
-	\item Modo Passo a Passo
+	\subsection{Modo Passo a Passo}
 	
 	O modo passo a passo é o oposto do modo automático, sendo assim necessário a atuação humana para a transição de estados. Com todas as condições de transição verdadeiras o processo apenas mudará de estado caso um botão no IHM (interface homem máquina) seja apertado manualmente. Caso ascondições de transição não sejam obdecidas e o operador utilizar o botão do IHM nada acontecerá.
 	
 	O valor do modo passo a passo é verificado em teste, já que o processo pode ser totaltmente controlado pelo engenheiro de qualidade, testando todas as transições e funcionalidade das entradas (sensores e timers) do sistema.
 	
-	\item Modo Homming
+	\subsection{Modo Homming}
 	
 	O modo Homming quando acionado imposibilitará a transição do estado inicial (Home) para o próximo. A transição somente ocorrerá quando o botão "Iniciar" da IHM for apertado. Ele funciona como o modo passo a passo, mas somente para o estado Home, todos os demais funcionam normalmente, estamo no modo passo a passo ou no modo automático.
 	
-	\item Parada de emergência
+	\subsection{Parada de emergência}
 	
 	
-	\item Alarmes e tratamentos de Erros
+	\subsection{Alarmes e tratamentos de Erros}
 	
 	
-	\item IHM
-	
-	
-\end{itemize}
+	\subsection{IHM}
 
 \section {Tabela de designação}
-{
-\begin {table}
-\caption {Tabela de Input.}
-\centering
+\begin{table}[H]
+	\caption{Tabela de Input.}
+	\centering
 	\begin{tabular}{|  p{2cm} | p{10cm} | p{2cm} | }
-\hline
-Entrada & Utilidade & Posição\\
-\hline
-SBM & sensor de volume baixo no tanque de maturação & ??? \\
-  ST & sensor de temperatura no tanque de maturação & ??? \\
- SBF & sensor de volume baixo do filtro & ??? \\
-\hline
-\end{tabular}\\
-\end {table}
-}
-
-
-{
-\begin {table}
-\caption {Tabela de Output.}
-\centering
-\begin{tabular}{|  p{2cm} | p{10cm} | p{2cm} | }
-\hline
-Atuador & Utilidade & Posição\\
-\hline
-  VCV & acionamento da válvula da cerveja verde & ??? \\
-  VCM & acionamento da válvula da cerveja maturada & ??? \\
- VFR & acionamento da válvula de fluido refrigerante & ??? \\
-VTD & acionamento da válvula de terra diatomácia & ???\\
-VR & acionamento da vállvula de discarte & ???\\
- \hline
-\end{tabular}\\
+		\hline
+		Entrada & Utilidade & Posição\\
+		\hline
+		$S_{bm}$ & sensor de volume baixo no tanque de maturação & $\%I1.0$ \\
+		$S_t$ & sensor de temperatura no tanque de maturação & $\%MD1$ \\
+		$S_{bf}$ & sensor de volume baixo do filtro & $\%I1.1$ \\
+		\hline
+	\end{tabular}
 \end{table}
-}
 
 
-{
-\begin {table}
-\caption {Tabela de Temporizadores.}
-\centering
-\begin{tabular}{|  p{2cm} | p{10cm} | p{2cm} | }
-\hline
-Nome & Utilidade & Posição\\
-\hline
-timer1 &  temporizador de entrada da cerveja verde & ??? \\
- timer2 & temporizador da maturação da cerveja verde & ??? \\
- \hline
-\end{tabular}
+\begin{table}[H]
+	\caption{Tabela de Output.}
+	\centering
+	\begin{tabular}{|  p{2cm} | p{10cm} | p{2cm} | }
+		\hline
+		Atuador & Utilidade & Posição\\
+		\hline
+  		$V_{cv}$ & acionamento da válvula da cerveja verde & $\%Q6.3$ \\
+  		$V_{cm}$ & acionamento da válvula da cerveja maturada & $\%Q6.2$ \\
+ 		$V_{fr}$ & acionamento da válvula de fluido refrigerante & $\%Q7.0$ \\
+		$V_{td}$ & acionamento da válvula de terra diatomácea & $\%Q7.1$ \\
+		$V_r$ & acionamento da válvula de descarte & $\%Q7.2$ \\
+ 		\hline
+	\end{tabular}
 \end{table}
-}
+
+
+\begin{table}[H]
+	\caption{Tabela de Temporizadores.}
+	\centering
+	\begin{tabular}{|  p{2cm} | p{10cm} | p{2cm} | }
+		\hline
+		Nome & Utilidade & Posição\\
+		\hline
+		$timer_1$ &  temporizador de entrada da cerveja verde & $\%M5.5$ \\
+		$timer_2$ & temporizador da maturação da cerveja verde & $\%M5.6$ \\
+		 \hline
+	\end{tabular}
+\end{table}
 
 \section {Implementação do sistema}
-\subsection{Grafcet}
-\begin{tikzpicture}
-\EtapeInit[0,0]{0}
-\Transition[VX0]{0}
-\DivET{T0}{-7.5/L10,7.5/L20}
-\Etape[VL10]{10}
-\Transition[VX10]{10}
-\EtapeEncapsulante[VT10]{20}
-\SequenceEE[VL20]{11}{21}
-\ConvET[7.5]{X20}{X21}{br3}
-\Transition[br3]{br3}
-\Etape[VTbr3]{4}
-\Transition[VX4]{4}
-\LienRetour[10]{T4}{X0}
-\ActionX{X10}{$V_cv$, inicia $timer_1$}
-\ActionActiv{X10}
-\ActionX{X20}{inicia $timer_2$}
-\ActionActiv{X20}
-\ActionX{X21}{$V_r$}
-\ActionX{X4}{$V_{cm}$,$V_{td}$}
-\Recept{T0}{$\overline{S_{bm}}\cdot Start$}
-\Recept{T10}{$timer_1 > 5s$}
-\Recept{Tbr3}{$timer_2 > 25s$}
-\Recept{T11}{$\overline{S_{bf}}$}
-\Recept{T4}{$\overline{S_{bm}}$}
-
-\begin{Encap}[nom]{7.5,-1.5}{20}{Refrigeração}
-\Etape[0,0]{200}
-\Transition[VX200]{200}
-\Etape[VT200]{300}
-\Transition[VX300]{300}
-\LienRetour{T300}{X200}
-\LienActivation{X200}
-\ActionX{X300}{$V_r$}
-\Recept{T200}{$S_t \geq 5^\circ~C$}
-\Recept{T300}{$S_t \le -5^\circ~C$}
-\end{Encap}
-
-\end{tikzpicture}
-
 
 \section {Conclusões}
 
