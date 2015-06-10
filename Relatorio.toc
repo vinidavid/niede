@@ -1,14 +1,6 @@
 \select@language {brazil}
-<<<<<<< HEAD
-\contentsline {section}{\numberline {1}Descri\GenericError {(inputenc) }{Package inputenc Error: Unicode char \u 8:ção not set up for use with LaTeX}{See the inputenc package documentation for explanation.}{Your command was ignored.\MessageBreak Type I <command> <return> to replace it with another command,\MessageBreak or <return> to continue without it.} T\GenericError {(inputenc) }{Package inputenc Error: Unicode char \u 8:écn not set up for use with LaTeX}{See the inputenc package documentation for explanation.}{Your command was ignored.\MessageBreak Type I <command> <return> to replace it with another command,\MessageBreak or <return> to continue without it.}ica do Processo}{2}{section.1}
-\contentsline {section}{\numberline {2}An\GenericError {(inputenc) }{Package inputenc Error: Unicode char \u 8:áli not set up for use with LaTeX}{See the inputenc package documentation for explanation.}{Your command was ignored.\MessageBreak Type I <command> <return> to replace it with another command,\MessageBreak or <return> to continue without it.}se do Projeto}{2}{section.2}
-\contentsline {section}{\numberline {3}Tabela de designa\GenericError {(inputenc) }{Package inputenc Error: Unicode char \u 8:ção not set up for use with LaTeX}{See the inputenc package documentation for explanation.}{Your command was ignored.\MessageBreak Type I <command> <return> to replace it with another command,\MessageBreak or <return> to continue without it.}}{2}{section.3}
-\contentsline {section}{\numberline {4}Implementa\GenericError {(inputenc) }{Package inputenc Error: Unicode char \u 8:ção not set up for use with LaTeX}{See the inputenc package documentation for explanation.}{Your command was ignored.\MessageBreak Type I <command> <return> to replace it with another command,\MessageBreak or <return> to continue without it.} do sistema}{2}{section.4}
-\contentsline {section}{\numberline {5}Conclus\@inpenc@undefined@ {utf8}es}{2}{section.5}
-=======
-\contentsline {section}{\numberline {1}Descri\c c\~ao T\'ecnica do Processo}{2}
-\contentsline {section}{\numberline {2}An\'alise do Projeto}{3}
-\contentsline {section}{\numberline {3}Tabela de designa\c c\~ao}{4}
-\contentsline {section}{\numberline {4}Implementa\c c\~ao do sistema}{4}
-\contentsline {section}{\numberline {5}Conclus\~oes}{4}
->>>>>>> 1a78c22033015d0f532047b9be1de444bb5ac13e
+\contentsline {section}{\numberline {1}Descri\IeC {\c c}\IeC {\~a}o T\IeC {\'e}cnica do Processo}{2}{section.1}
+\contentsline {section}{\numberline {2}An\IeC {\'a}lise do Projeto}{3}{section.2}
+\contentsline {section}{\numberline {3}Tabela de designa\IeC {\c c}\IeC {\~a}o}{4}{section.3}
+\contentsline {section}{\numberline {4}Implementa\IeC {\c c}\IeC {\~a}o do sistema}{4}{section.4}
+\contentsline {section}{\numberline {5}Conclus\IeC {\~o}es}{4}{section.5}
