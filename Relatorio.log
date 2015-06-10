@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.23)  10 JUN 2015 13:59
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.23)  10 JUN 2015 14:11
 entering extended mode
 **C:/Users/Vinícius/Desktop/Graduacao/9*semestre/ES726/niede/Relatorio.tex
 ("C:/Users/Vinícius/Desktop/Graduacao/9 semestre/ES726/niede/Relatorio.tex"
@@ -264,7 +264,11 @@ LaTeX Info: Redefining \] on input line 2666.
 )
 \c@teorema=\count107
 
-("C:\Users\Vinícius\Desktop\Graduacao\9 semestre\ES726\niede\Relatorio.aux")
+("C:\Users\Vinícius\Desktop\Graduacao\9 semestre\ES726\niede\Relatorio.aux"
+
+LaTeX Warning: Label `fig:corrente' multiply defined.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
@@ -277,8 +281,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count108
 \scratchdimen=\dimen124
@@ -302,41 +305,57 @@ Non-PDF special ignored!
 ("C:\Users\Vinícius\Desktop\Graduacao\9 semestre\ES726\niede\Relatorio.toc")
 \tf@toc=\write4
 
-[1]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 129.
+[1] <tanque.png, id=16, 423.83344pt x 144.54pt>
+File: tanque.png Graphic file (type png)
+ <use tanque.png>
+Package pdftex.def Info: tanque.png used on input line 125.
+(pdftex.def)             Requested size: 289.07999pt x 98.58803pt.
 
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+<filtro.png, id=17, 272.51813pt x 282.30469pt>
+File: filtro.png Graphic file (type png)
+ <use filtro.png>
+Package pdftex.def Info: filtro.png used on input line 136.
+(pdftex.def)             Requested size: 289.07999pt x 299.47844pt.
+ [2
+
+ <C:/Users/Vinícius/Desktop/Graduacao/9 semestre/ES726/niede/tanque.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 148.
+
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 129.
- [2
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 148.
+ [3 <C:/Users/Vinícius/Desktop/Graduacao/9 semestre/ES726/niede/filtro.png>] [
+4]
+("C:\Users\Vinícius\Desktop\Graduacao\9 semestre\ES726\niede\Relatorio.aux")
 
-]
-("C:\Users\Vinícius\Desktop\Graduacao\9 semestre\ES726\niede\Relatorio.aux") )
- 
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4081 strings out of 493921
- 59329 string characters out of 3144924
- 120324 words of memory out of 3000000
- 7292 multiletter control sequences out of 15000+200000
+ 4099 strings out of 493921
+ 59565 string characters out of 3144924
+ 119373 words of memory out of 3000000
+ 7307 multiletter control sequences out of 15000+200000
  15936 words of font info for 38 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 42i,5n,38p,562b,283s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk> <C:
-\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk> <C:\Pro
-gramData\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Program
-Data\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\ProgramData
-\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk> <C:\ProgramData\MiK
-TeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk> <C:\ProgramData\MiKTeX\
-2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1440.pk> <C:\ProgramData\MiKTeX\2.9\
-fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\ProgramData\MiKTeX\2.9\font
-s\pk\ljfour\jknappen\ec\dpi600\eccc1200.pk> <C:\ProgramData\MiKTeX\2.9\fonts\pk
-\ljfour\jknappen\ec\dpi600\eccc2074.pk><C:/Program Files (x86)/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Relatorio.pdf (3 pages, 105150 bytes).
+ 42i,6n,38p,562b,286s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk> <
+C:\ProgramData\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk> <C:\P
+rogramData\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Progr
+amData\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\ProgramDa
+ta\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk> <C:\ProgramData\M
+iKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk> <C:\ProgramData\MiKTe
+X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1440.pk> <C:\ProgramData\MiKTeX\2.
+9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\ProgramData\MiKTeX\2.9\fo
+nts\pk\ljfour\jknappen\ec\dpi600\eccc1200.pk> <C:\ProgramData\MiKTeX\2.9\fonts\
+pk\ljfour\jknappen\ec\dpi600\eccc2074.pk><C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Relatorio.pdf (5 pages, 135349 bytes).
 PDF statistics:
- 296 PDF objects out of 1000 (max. 8388607)
+ 308 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
