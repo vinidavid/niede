@@ -16,6 +16,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{grafcet}
+\usepackage{pdfpages}
 %----------------------------
 
 
@@ -131,17 +132,18 @@
 	\end{figure}
 	
 	\subsection{Modo Automático}
-	O modo automático consiste na mudança de estado automática. Quando todas as condições necessárias para a mudança de estado se tornam verdadeiras e o modo automático está ativo a mudança de estado acontecerá, sendo assim, não sendo necessária a atuação humana. Este modo permite um processo mais rápido e mais barato por não necessitar de um funcionário presente para fazer as transições. Contudo poderá haver problemas caso a verificação para as condições estiver com problema, se os sensores, por exemplo, estiverem com problema o processo pode avançar mesmo não sendo o momento apropriado para tal.
+	O modo automático consiste na ciclagem automática entre os estados do sistema. Este é o modo padrão de operação do sistema e não necessita de um funcionário presente para fazer as transições. Quando o sistema está na posição home e no modo automático, este aguarda que seja pressionada a chave Iniciar para começar sua execução. Caso este esteja no modo homming e seja transferido para o automático, ele continuará seu ciclo normalmente até que volte para home e então aguardará o botão Iniciar para entrar no modo automático. A implementação de tal lógica pode ser vista na seção \ref{sec:ladder} nas redes 2 a 4. 
+	
+	\subsection{Modo Homming}
+		
+	O modo Homming, ao contrário do modo Automático, faz com o que o sistema pause entre os ciclos de operação. A transição entre a posição "home" e a próxima somente ocorrerá quando o botão "Iniciar" da IHM for apertado. Um ciclo de homming só termina quando o sistema atinge sua posição inicial ("home"), sendo que a transição entre o modo Homming e o modo Automático somente será efetuada quando o sistema se encontrar nesta posição. O modo Homming é útil durante a configuração inicial do sistema e a etapa de testes/validação. Sua implementação pode ser vista na seção \ref{sec:ladder} nas redes 2 a 4. 
+	
 	
 	\subsection{Modo Passo a Passo}
-	
+
 	O modo passo a passo é o oposto do modo automático, sendo assim necessário a atuação humana para a transição de estados. Com todas as condições de transição verdadeiras o processo apenas mudará de estado caso um botão no IHM (interface homem máquina) seja apertado manualmente. Caso ascondições de transição não sejam obdecidas e o operador utilizar o botão do IHM nada acontecerá.
 	
 	O valor do modo passo a passo é verificado em teste, já que o processo pode ser totaltmente controlado pelo engenheiro de qualidade, testando todas as transições e funcionalidade das entradas (sensores e timers) do sistema.
-	
-	\subsection{Modo Homming}
-	
-	O modo Homming quando acionado imposibilitará a transição do estado inicial (Home) para o próximo. A transição somente ocorrerá quando o botão "Iniciar" da IHM for apertado. Ele funciona como o modo passo a passo, mas somente para o estado Home, todos os demais funcionam normalmente, estamo no modo passo a passo ou no modo automático.
 	
 	\subsection{Parada de emergência}
 	
@@ -150,6 +152,15 @@
 	
 	
 	\subsection{IHM}
+	
+	\begin{figure}[H]
+		\centering
+		\label{fig:ihm}
+		\includegraphics [width=0.8\linewidth]{ihmsmall.pdf}
+		\caption{IHM do sistema}
+	\end{figure}
+	
+	Os detalhes da implementação da IHM podem ser vistas no apêndice \ref{apx:ihm}
 
 \section {Tabela de designação}
 \begin{table}[H]
@@ -197,10 +208,24 @@
 	\end{tabular}
 \end{table}
 
+A tabela completa de variáveis do sistema pode ser vista no apêndice \ref{apx:table}
+
 \section {Implementação do sistema}
+\label{sec:ladder}
+A implementação ladder do sistema pode ser vista a seguir, para facilitar as demonstrações e o processo de depuração, nós diminuímos o tempo de enchimento do tanque para 5 segundos e o tempo de maturação da cerveja para 25 segundos.
+
+\includepdf[pages={-}]{ladder.pdf}
 
 \section {Conclusões}
 
+\appendix
+\newpage
+\includepdf[scale=0.6,pages={1},pagecommand=\section{Tabela de Variáveis}]{table.pdf}
+\label{apx:table}
+\includepdf[scale=0.6, pages={2-}]{table.pdf}
+\includepdf[scale=0.68,pages={1},pagecommand=\section{Detalhes da IHM}]{ihm.pdf}
+\label{apx:ihm}
+\includepdf[scale=0.68,pages={2-}]{ihm.pdf}
 
 \begin{thebibliography}{5}
 	
