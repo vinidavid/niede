@@ -78,6 +78,13 @@
 	Após a filtragem a cerveja é então destinada à próxima etapa da sua fabricação, sendo esta não descrita por este trabalho.
 	
 	\section {Análise do Projeto}
+	Para a primeira etapa do projeto nós acrescentamos um sensor de nível baixo no taque do maturador, afim de verificar que este está de fato vazio antes de preenchê-lo com cerveja verde. Como não existe perigo de que muita cerveja verde seja fornecida para o tanque (uma vez que a quantidade disponível é limitada pelo tamanho do tanque anterior no processo), o procedimento é controlado através de um timer, estimamos que 10 minutos seja tempo mais que suficiente para preencher o tanque. Deixamos então a cerveja maturar por 2 horas, controlando a sua temperatura através de sensores.
+	
+	Enquanto o  tanque está sendo preenchido e durante o processo de maturação da cerveja, podemos realizar de maneira paralela a liberação dos resíduos do filtro, contanto que não exista mais cerveja maturada para ser filtrada, verificamos isso através de um sensor colocado um pouco abaixo do nível do filtro. Abrimos a válvula para liberação dos resíduos e a deixamos aberta até que a cerveja no maturador acabe de maturar, como a maturação é um processo lento, teremos tempo de sobra para esvaziar o filtro.
+	
+	Uma vez maturada, a cerveja segue para o a filtração onde receberá terra diatomácea. O controle da proporção entre cerveja e terra diatomácea se dá pela configuração manual das válvulas de liberação de ambas e não será abordada pelo programa.
+	
+	A figura \ref{fig:grafcet} mostra um diagrama grafcet da nossa implementação do processo.
 	
 	\begin{figure}[H]
 		\centering
@@ -102,8 +109,8 @@
 			\ActionX{X21}{$V_r$}
 			\ActionX{X4}{$V_{cm}$,$V_{td}$}
 			\Recept{T0}{$\overline{S_{bm}}\cdot Start$}
-			\Recept{T10}{$timer_1 > 5s$}
-			\Recept{Tbr3}{$timer_2 > 25s$}
+			\Recept{T10}{$timer_1 > 10min$}
+			\Recept{Tbr3}{$timer_2 > 1h30mins$}
 			\Recept{T11}{$\overline{S_{bf}}$}
 			\Recept{T4}{$\overline{S_{bm}}$}
 			
