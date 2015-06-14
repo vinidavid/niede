@@ -45,8 +45,8 @@
 	\input{capa.tex}
 	
 	\tableofcontents
-	%\listoffigures
-	%\listoftables
+	\listoffigures
+	\listoftables
 	
 	\clearpage
 	
@@ -79,6 +79,7 @@
 	Após a filtragem a cerveja é então destinada à próxima etapa da sua fabricação, sendo esta não descrita por este trabalho.
 	
 	\section {Análise do Projeto}
+	\label{sec:analise}
 	Para a primeira etapa do projeto nós acrescentamos um sensor de nível baixo no taque do maturador, afim de verificar que este está de fato vazio antes de preenchê-lo com cerveja verde. Como não existe perigo de que muita cerveja verde seja fornecida para o tanque (uma vez que a quantidade disponível é limitada pelo tamanho do tanque anterior no processo), o procedimento é controlado através de um timer, estimamos que 10 minutos seja tempo mais que suficiente para preencher o tanque. Deixamos então a cerveja maturar por 2 horas, controlando a sua temperatura através de sensores.
 	
 	Enquanto o  tanque está sendo preenchido e durante o processo de maturação da cerveja, podemos realizar de maneira paralela a liberação dos resíduos do filtro, contanto que não exista mais cerveja maturada para ser filtrada, verificamos isso através de um sensor colocado um pouco abaixo do nível do filtro. Abrimos a válvula para liberação dos resíduos e a deixamos aberta até que a cerveja no maturador acabe de maturar, como a maturação é um processo lento, teremos tempo de sobra para esvaziar o filtro.
@@ -89,7 +90,6 @@
 	
 	\begin{figure}[H]
 		\centering
-		\label{fig:grafcet}
 		\begin{tikzpicture}
 			\EtapeInit[0,0]{0}
 			\Transition[VX0]{0}
@@ -115,7 +115,7 @@
 			\Recept{T11}{$\overline{S_{bf}}$}
 			\Recept{T4}{$\overline{S_{bm}}$}
 			
-			\begin{Encap}[nom]{7.5,-1.5}{20}{Refrigeração}
+			\begin{Encap}[nom]{6.0,-1.5}{20}{Refrigeração}
 			\Etape[0,0]{200}
 			\Transition[VX200]{200}
 			\Etape[VT200]{300}
@@ -129,6 +129,7 @@
 		
 		\end{tikzpicture}
 		\caption{Diagrama grafcet do projeto}
+		\label{fig:grafcet}
 	\end{figure}
 	
 	\subsection{Modo Automático}
@@ -141,17 +142,18 @@
 	
 	\subsection{Modo Passo a Passo}
 
-	O modo passo a passo é o oposto do modo automático, sendo assim necessário a atuação humana para a transição de estados. Com todas as condições de transição verdadeiras o processo apenas mudará de estado caso um botão no IHM (interface homem máquina) seja apertado manualmente. Caso ascondições de transição não sejam obdecidas e o operador utilizar o botão do IHM nada acontecerá.
+	O modo passo a passo facilita a depuração e teste do sistema, introduzindo a necessidade a atuação humana para a transição entre estados. Com todas as condições de transição verificadas o processo apenas mudará de estado caso um botão na IHM (Passo) seja apertado manualmente. Caso as condições de transição não sejam obedecidas e o operador pressionar o botão na IHM nada acontecerá.
 	
-	O valor do modo passo a passo é verificado em teste, já que o processo pode ser totaltmente controlado pelo engenheiro de qualidade, testando todas as transições e funcionalidade das entradas (sensores e timers) do sistema.
+	Sua utilidade é comprovada durante os testes, já que o processo pode ser totalmente controlado pelo engenheiro de qualidade, testando todas as transições e funcionalidade das entradas (sensores e timers) do sistema. A implementação do modo passo a passo pode ser vista na seção \ref{sec:ladder} nas redes 5 a 9.
 	
 	\subsection{Parada de emergência}
-	
+	%TODO Explicar emergência
 	
 	\subsection{Alarmes e tratamentos de Erros}
-	
+	%TODO Explicar Alarmes
 	
 	\subsection{IHM}
+	%TODO Explicar IHM e acertar caption
 	
 	\begin{figure}[H]
 		\centering
@@ -212,18 +214,19 @@ A tabela completa de variáveis do sistema pode ser vista no apêndice \ref{apx:
 
 \section {Implementação do sistema}
 \label{sec:ladder}
-A implementação ladder do sistema pode ser vista a seguir, para facilitar as demonstrações e o processo de depuração, nós diminuímos o tempo de enchimento do tanque para 5 segundos e o tempo de maturação da cerveja para 25 segundos.
+Implementamos o sistema em ladder seguindo o grafcet apresentado na figura \ref{fig:grafcet} e todas as considerações feitas na seção \ref{sec:analise}, para facilitar as demonstrações e o processo de depuração, nós diminuímos o tempo de enchimento do tanque para 5 segundos e o tempo de maturação da cerveja para 25 segundos. A implementação completa pode ser vista a seguir.
 
 \includepdf[pages={-}]{ladder.pdf}
 
 \section {Conclusões}
-
-\appendix
+%TODO Concluir
 \newpage
-\includepdf[scale=0.6,pages={1},pagecommand=\section{Tabela de Variáveis}]{table.pdf}
+\appendix
+\section{Apêndices}
+\includepdf[scale=0.6,pages={1},pagecommand=\subsection{Tabela de Variáveis}]{table.pdf}
 \label{apx:table}
 \includepdf[scale=0.6, pages={2-}]{table.pdf}
-\includepdf[scale=0.68,pages={1},pagecommand=\section{Detalhes da IHM}]{ihm.pdf}
+\includepdf[scale=0.68,pages={1},pagecommand=\subsection{Detalhes da IHM}]{ihm.pdf}
 \label{apx:ihm}
 \includepdf[scale=0.68,pages={2-}]{ihm.pdf}
 
