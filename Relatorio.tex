@@ -147,7 +147,6 @@
 	Sua utilidade é comprovada durante os testes, já que o processo pode ser totalmente controlado pelo engenheiro de qualidade, testando todas as transições e funcionalidade das entradas (sensores e timers) do sistema. A implementação do modo passo a passo pode ser vista na seção \ref{sec:ladder} nas redes 5 a 9.
 	
 	\subsection{Parada de emergência}
-	%TODO Revisar
 	Quando o botão de emergência da IHM (interface homem-máquina, figura \ref{fig:ihm}) é ativado, os estados ativos são enviados para seu estado equivalente de emergência, como pode ser visto na implementação na rede 24 da seção \ref{sec:ladder}. Por motivos de segurança, todos os atuadores são desativados (todas as válvulas são fechadas, incluindo a responsável pelo fluido refrigerante que não tem contato direto com o produto), até que o sistema saia do estado de emergência ao desativar o botão da interface gráfica. 
 	
 	No processo de saída do estado de emergência, conforme a rede 23 da seção \ref{sec:ladder}, cada estágio que estava em modo de emergência é retomado, cabendo ao operador determinar a validade ou não do lote que ficou parado na produção dependendo do tempo em que o sistema ficou em emergência e da circunstância que levou à parada, pois pode ou não afetar a integridade do produto. Esta decisão é de certa maneira delicada, e não foi possível automatizá-la. 
@@ -168,11 +167,11 @@
 	%TODO Revisar
 	A IHM (Interface Homem-Máquina) do sistema mostrada na figura \ref{fig:ihm} possui entradas e saídas para que o operador consiga controlar o andamento da produção, obtendo dados do que está acontecendo com ela. 
 	
-	As saídas da IHM são basicamente duas luzes do lado superior esquerdo identificadas com o símbolo *, uma vermelha para identificar uma situação de alarme, e outra verde quando o sistema está em ``Home", e também pode-se acompanhar a variação de temperatura no maturador mostrada no centro da tela identificado também com o símbolo *.
+	As saídas da IHM são basicamente duas luzes do lado superior esquerdo identificadas com o símbolo *, uma vermelha para identificar uma situação de alarme, e outra verde quando o sistema está em "Home", e também pode-se acompanhar a variação de temperatura no maturador mostrada no centro da tela identificado também com o símbolo *.
 	
-	Conforme explicado anteriormente, é possível escolher modos de operação, como o ``Homming" ou ``Automático" pela chave seletora na parte inferior esquerda (identificada pelo número 1), ativar ou desativar a execução ``Passo a passo" pela chave ao lado (identificada pelo número 2).	Para ativar e desativar o modo de emergência pela chave em destaque no lado direito superior.
+	Conforme explicado anteriormente, é possível escolher modos de operação, como o "Homming" ou "Automático" pela chave seletora na parte inferior esquerda (identificada pelo número 1), ativar ou desativar a execução "Passo a passo" pela chave ao lado (identificada pelo número 2).	Para ativar e desativar o modo de emergência pela chave em destaque no lado direito superior.
 	
-	No modo ``Passo a Passo" após o sistema conseguir as condições para mudar de estado, deve-se pressionar a tecla ``Passo" (identificado por 4) na parte inferior direita da tela para efetuar a transição. No modo ``Homming" é necessário apertar o botão ``Iniciar" na parte superior central (identificado por 5) para começar um novo ciclo quando o sistema se encontra em ``Home". Em caso de estado de alarme, deve-se reparar as condições de alarme e em seguida apertar o botão ``Reset Alarme" do lado direito no centro (identificado por 6) para desativá-lo.
+	No modo "Passo a Passo" após o sistema conseguir as condições para mudar de estado, deve-se pressionar a tecla "Passo" (identificado por 4) na parte inferior direita da tela para efetuar a transição. No modo "Homming" é necessário apertar o botão "Iniciar" na parte superior central (identificado por 5) para começar um novo ciclo quando o sistema se encontra em "Home". Em caso de estado de alarme, deve-se reparar as condições que causaram o alarme e em seguida apertar o botão "Reset Alarme" do lado direito no centro (identificado por 6) para desativá-lo.
 	
 	Os detalhes da implementação da IHM podem ser vistas no apêndice \ref{apx:ihm}.
 	
@@ -239,6 +238,9 @@ Implementamos o sistema em ladder seguindo o grafcet apresentado na figura \ref{
 
 \section {Conclusões}
 %TODO Concluir
+O processo de produção de cerveja é grande e complexo, porém ao abordar uma parte específica, conseguimos chegar a soluções relativamente simples para a automatização de etapas do mesmo. O processo de abstração que nos foi apresentado durante o decorrer do curso se provou de grande utilidade para a realização desse projeto, a organização do problema em tabelas de variáveis e a construção do diagrama grafcet facilitou a implementação ladder do projeto, além de nos dar uma percepção mais acurada da complexidade do sistema.
+
+Apesar de termos abordado um problema real, a solução encontrada foi mais simples do que o esperávamos. Mostramos isso pela solução implementada que possuí menos de 10 estados e apenas 3 entradas e 5 saídas.
 \newpage
 \appendix
 \section{Apêndices}
@@ -252,8 +254,6 @@ Implementamos o sistema em ladder seguindo o grafcet apresentado na figura \ref{
 \begin{thebibliography}{5}
 	\bibitem{roteiro4} Roteiro "4. Maturação e Filtração" disponibilizado para os alunos
 	\bibitem{roteirogeral} Roteiro "Descrição Geral do Projeto Final" disponibilizado para os alunos
-	%TODO: Realmente usamos o Ogata??? Retirar caso esteja aqui só por causa do modelo
-	\bibitem{Ogata11} K. Ogata, \emph{Engenharia de Controle Moderno}, 6ª edição, 2011.
 \end{thebibliography}
 
 \end{document}
