@@ -137,7 +137,7 @@
 	
 	\subsection{Modo Homming}
 		
-	O modo Homming, ao contrário do modo Automático, faz com o que o sistema pause entre os ciclos de operação. A transição entre a posição "home" e a próxima somente ocorrerá quando o botão "Iniciar" da IHM for apertado. Um ciclo de homming só termina quando o sistema atinge sua posição inicial ("home"), sendo que a transição entre o modo Homming e o modo Automático somente será efetuada quando o sistema se encontrar nesta posição. O modo Homming é útil durante a configuração inicial do sistema e a etapa de testes/validação. Sua implementação pode ser vista na seção \ref{sec:ladder} nas redes 2 a 4. 
+	O modo Homming, ao contrário do modo Automático, faz com o que o sistema pause entre os ciclos de operação. A transição entre a posição ``home" e a próxima somente ocorrerá quando o botão ``Iniciar" da IHM for apertado. Um ciclo de homming só termina quando o sistema atinge sua posição inicial (``home"), sendo que a transição entre o modo Homming e o modo Automático somente será efetuada quando o sistema se encontrar nesta posição. O modo Homming é útil durante a configuração inicial do sistema e a etapa de testes/validação. Sua implementação pode ser vista na seção \ref{sec:ladder} nas redes 2 a 4. 
 	
 	
 	\subsection{Modo Passo a Passo}
@@ -147,22 +147,41 @@
 	Sua utilidade é comprovada durante os testes, já que o processo pode ser totalmente controlado pelo engenheiro de qualidade, testando todas as transições e funcionalidade das entradas (sensores e timers) do sistema. A implementação do modo passo a passo pode ser vista na seção \ref{sec:ladder} nas redes 5 a 9.
 	
 	\subsection{Parada de emergência}
-	%TODO Explicar emergência
+	%TODO Revisar
+	Quando o botão de emergência da IHM (interface homem-máquina, figura \ref{fig:ihm}) é ativado, os estados ativos são enviados para seu estado equivalente de emergência, como pode ser visto na implementação na rede 24 da seção \ref{sec:ladder}. Por motivos de segurança, todos os atuadores são desativados (todas as válvulas são fechadas, incluindo a responsável pelo fluido refrigerante que não tem contato direto com o produto), até que o sistema saia do estado de emergência ao desativar o botão da interface gráfica. 
+	
+	No processo de saída do estado de emergência, conforme a rede 23 da seção \ref{sec:ladder}, cada estágio que estava em modo de emergência é retomado, cabendo ao operador determinar a validade ou não do lote que ficou parado na produção dependendo do tempo em que o sistema ficou em emergência e da circunstância que levou à parada, pois pode ou não afetar a integridade do produto. Esta decisão é de certa maneira delicada, e não foi possível automatizá-la. 
 	
 	\subsection{Alarmes e tratamentos de Erros}
-	%TODO Explicar Alarmes
+	%TODO Revisar, principalmente tempos das condições de alarme e o que isto pode significar
+	Para a implementação do sistema de alarmes, utilizamos um conjunto de situações que não afetavam de imediato a produção, mas que necessitam de atenção do operador. Estas situações são descritas abaixo, junto com os cuidados que devem ser tomados caso aconteça a situação de alarme. Está implementada nas redes 18 a 22 na seção \ref{sec:ladder}.
+	\begin{itemize}
+		\item Temperatura da cerveja no maturador ficar menor que $-10^oC$ ou maior que $30^oC$: Indica problemas com sensor de temperatura ou com a válvula de fluido refrigerante, além de indicar que a temperatura saiu do intervalo desejado e que pode ter comprometido o lote de cerveja em produção.
+		\item Tempo para atingir o nível baixo do filtro maior que $30$ minutos: Indica problemas com o sensor de nível baixo do filtro ou com sua permeabilidade, que pode causar atrasos na linha de produção.
+		\item Tempo de resfriamento da cerveja no maturador maior que $30$ minutos: Indica problemas com o sensor de temperatura ou com o sistema de refrigeração (válvula defeituosa, vazamento no fluido de refrigeração, entre outros), podendo causar distúrbios na temperatura de maturação.
+		\item Tempo de saída da cerveja madura maior que $10$ minutos: Indica problemas na válvula de saída ou no sensor de nível baixo do maturador.
+	\end{itemize}
+	
+	Quando o sistema se encontra em situação de alarme, um LED de alarme é aceso na IHM (interface homem-máquina), e só pode ser apagado quando todas as condições de alarme forem resolvidas e o operador pressionar a tecla para desligar o alarme (Reset Alarme) na IHM.
 	
 	\subsection{IHM}
-	%TODO Explicar IHM e acertar caption
+	%TODO Revisar
+	A IHM (Interface Homem-Máquina) do sistema mostrada na figura \ref{fig:ihm} possui entradas e saídas para que o operador consiga controlar o andamento da produção, obtendo dados do que está acontecendo com ela. 
+	
+	As saídas da IHM são basicamente duas luzes do lado superior esquerdo identificadas com o símbolo *, uma vermelha para identificar uma situação de alarme, e outra verde quando o sistema está em ``Home", e também pode-se acompanhar a variação de temperatura no maturador mostrada no centro da tela identificado também com o símbolo *.
+	
+	Conforme explicado anteriormente, é possível escolher modos de operação, como o ``Homming" ou ``Automático" pela chave seletora na parte inferior esquerda (identificada pelo número 1), ativar ou desativar a execução ``Passo a passo" pela chave ao lado (identificada pelo número 2).	Para ativar e desativar o modo de emergência pela chave em destaque no lado direito superior.
+	
+	No modo ``Passo a Passo" após o sistema conseguir as condições para mudar de estado, deve-se pressionar a tecla ``Passo" (identificado por 4) na parte inferior direita da tela para efetuar a transição. No modo ``Homming" é necessário apertar o botão ``Iniciar" na parte superior central (identificado por 5) para começar um novo ciclo quando o sistema se encontra em ``Home". Em caso de estado de alarme, deve-se reparar as condições de alarme e em seguida apertar o botão ``Reset Alarme" do lado direito no centro (identificado por 6) para desativá-lo.
+	
+	Os detalhes da implementação da IHM podem ser vistas no apêndice \ref{apx:ihm}.
 	
 	\begin{figure}[H]
 		\centering
-		\label{fig:ihm}
 		\includegraphics [width=0.8\linewidth]{ihmsmall.pdf}
-		\caption{IHM do sistema}
+		\caption{IHM (Interface Homem-Máquina) do sistema}
+		\label{fig:ihm}
 	\end{figure}
-	
-	Os detalhes da implementação da IHM podem ser vistas no apêndice \ref{apx:ihm}
 
 \section {Tabela de designação}
 \begin{table}[H]
@@ -231,9 +250,10 @@ Implementamos o sistema em ladder seguindo o grafcet apresentado na figura \ref{
 \includepdf[scale=0.68,pages={2-}]{ihm.pdf}
 
 \begin{thebibliography}{5}
-	
+	\bibitem{roteiro4} Roteiro "4. Maturação e Filtração" disponibilizado para os alunos
+	\bibitem{roteirogeral} Roteiro "Descrição Geral do Projeto Final" disponibilizado para os alunos
+	%TODO: Realmente usamos o Ogata??? Retirar caso esteja aqui só por causa do modelo
 	\bibitem{Ogata11} K. Ogata, \emph{Engenharia de Controle Moderno}, 6ª edição, 2011.
-	
 \end{thebibliography}
 
 \end{document}
