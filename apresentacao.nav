@@ -25,29 +25,18 @@
 \headcommand {\beamer@subsectionentry {0}{2}{2}{8}{Diagrama Grafcet}}\headcommand {\beamer@subsectionpages {6}{7}}
 \headcommand {\slideentry {2}{2}{1}{8/8}{Diagrama Grafcet}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {2}{2}{2}{9/9}{Diagrama Grafcet}{0}}
+\headcommand {\sectionentry {3}{Implementa\IeC {\c c}\IeC {\~a}o}{9}{Implementa\IeC {\c c}\IeC {\~a}o}{0}}
+\headcommand {\beamer@sectionpages {5}{8}}
+\headcommand {\beamer@subsectionpages {8}{8}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{9}{IHM e Opera\IeC {\c c}\IeC {\~a}o}}\headcommand {\beamer@subsectionpages {9}{8}}
+\headcommand {\slideentry {3}{1}{1}{9/9}{IHM e Opera\IeC {\c c}\IeC {\~a}o}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {2}{2}{3}{10/10}{Diagrama Grafcet}{0}}
+\headcommand {\slideentry {3}{1}{2}{10/10}{IHM e Opera\IeC {\c c}\IeC {\~a}o}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\sectionentry {3}{Second Section}{11}{Second Section}{0}}
-\headcommand {\beamer@sectionpages {5}{10}}
-\headcommand {\beamer@subsectionpages {8}{10}}
-\headcommand {\slideentry {3}{0}{4}{11/11}{}{0}}
+\headcommand {\slideentry {3}{1}{3}{11/11}{IHM e Opera\IeC {\c c}\IeC {\~a}o}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\slideentry {3}{0}{5}{12/12}{}{0}}
-\headcommand {\beamer@framepages {12}{12}}
-\headcommand {\slideentry {3}{0}{6}{13/13}{}{0}}
-\headcommand {\beamer@framepages {13}{13}}
-\headcommand {\slideentry {3}{0}{7}{14/14}{}{0}}
-\headcommand {\beamer@framepages {14}{14}}
-\headcommand {\slideentry {3}{0}{8}{15/15}{}{0}}
-\headcommand {\beamer@framepages {15}{15}}
-\headcommand {\slideentry {3}{0}{9}{16/16}{}{0}}
-\headcommand {\beamer@framepages {16}{16}}
-\headcommand {\slideentry {3}{0}{10}{17/17}{}{0}}
-\headcommand {\beamer@framepages {17}{17}}
-\headcommand {\beamer@partpages {1}{17}}
-\headcommand {\beamer@subsectionpages {11}{17}}
-\headcommand {\beamer@sectionpages {11}{17}}
-\headcommand {\beamer@documentpages {17}}
-\headcommand {\def \inserttotalframenumber {17}}
+\headcommand {\beamer@partpages {1}{11}}
+\headcommand {\beamer@subsectionpages {9}{11}}
+\headcommand {\beamer@sectionpages {9}{11}}
+\headcommand {\beamer@documentpages {11}}
+\headcommand {\def \inserttotalframenumber {11}}
