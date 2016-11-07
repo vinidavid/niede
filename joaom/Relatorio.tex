@@ -52,11 +52,11 @@
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Descrição do Problema}
-	No processo de fabricação de cerveja é importante 
+	No processo de fabricação da cerveja, logo após a fermentação, é comum deixar que a bebida passe por uma "fermentação secundária" conhecida como maturação. Durante a maturação ocorre a redução na concentração de ácido sulfídrico, de acetaldeído e de diacetil, produtos da fermentação que afetam o sabor da cerveja. Esse processo também é importante pois nele ocorre a clarificação da cerveja através da precipitação das leveduras e de proteínas que dão um aspecto turvo ao produto. É importante controlar a temperatura e o tempo de maturação de maneira a garantir as características desejadas para a cerveja, tipos diferentes de cerveja precisam ser maturadas em temperaturas e por durações diferentes. A clarificação da cerveja pode ser completada com um processo de filtração pós maturação a fim de remover as partículas em suspensão.
 	
 	\section{Descrição Técnica do Processo}
 	
-	Este relatório consiste na descrição da solução encontrada para o problema da maturação e filtragem da produção de cerveja. O processo começa após a fermentação da cerveja verde (pós fermentação) que é mandada para tanques de maturação como o da figura \ref{fig:maturador} (válvula $V_{cv}$ e $timer_1$). No tanque a cerveja verde permanece entre 1h e 3h ($timer2$) com controle constante de sua temperatura, esta necessitando estar em $0ºC$, ou no máximo entre $-5$ e $5ºC$. Este controle de temperatura deve ser feito com base no acionamento do fluido refrigerante ($V_{fr}$) e em um sensor de temperatura ($S_t$).
+	Este relatório consiste na descrição da solução encontrada para o problema da maturação e filtragem da produção de cerveja. O processo começa após a fermentação da cerveja verde (pós fermentação) que é mandada para tanques de maturação como o da figura \ref{fig:maturador} (válvula $V_{cv}$ e $timer_1$). No tanque a cerveja verde permanece no taque por um tempo variado ($timer2$) com controle constante de sua temperatura, esta necessitando estar em um intervalo específico de temperaturas. Este controle de temperatura será feito com base no acionamento do fluido refrigerante ($V_{fr}$) e em um sensor de temperatura ($S_t$).
 	
 	\begin{figure}[H]
 		\centering
@@ -255,6 +255,7 @@ Apesar de termos abordado um problema real, a solução encontrada foi mais simp
 \includepdf[scale=0.68,pages={2-}]{ihm.pdf}
 
 \begin{thebibliography}{5}
+	% LINK BOM http://www.ufrgs.br/alimentus1/feira/prcerea/cerveja/fluxo.htm
 	\bibitem{roteiro4} MASTELARI, N. ``Maturação e Filtração"
 \end{thebibliography}
 
