@@ -1,0 +1,294 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{psfrag}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{grafcet}
+\usepackage{pdfpages}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Projeto 4]{Maturação no processo de Fabricação de Cerveja} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Daniel Dello Russo,\\ Marcelli Tiemi Kian,\\ Vinicius David} % Your name
+\institute[FEM] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Universidade Estadual de Campinas \\ % Your institution for the title page
+\medskip
+\textit{} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+\section{Descrição Técnica do Processo} 
+%------------------------------------------------
+\subsection{Maturação}
+\begin{frame}
+\frametitle{Maturação}
+\begin{itemize}
+	\item Enchimento do tanque
+	\item 1 à 3 horas para maturação
+	\item Controle de temperatura
+\end{itemize}
+
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics [width=0.5\linewidth]{tanque.png}
+		\caption {Tanque de maturação da cerveja verde.}
+		\label{fig:maturador}
+	\end{figure}
+\end{frame}
+%------------------------------------------------
+\subsection{Filtragem}
+\begin{frame}
+	\frametitle{Filtragem}
+	\begin{itemize}
+		\item Liberação da cerveja verde e da terra diatomácea
+		\item Descarte dos resíduos
+	\end{itemize}
+	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics [width=0.3\linewidth]{filtro.png}
+		\caption {Filtro da cerveja maturada}
+		\label{fig:filtro}
+	\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\section{Análise do Projeto}
+\begin{frame}
+\frametitle{Análise do Projeto}
+	\begin{block}{Considerações}
+		\begin{itemize}
+		\item Sensor de nível baixo para maturador
+		\item Tempo para enchimento: 10 minutos
+		\item Filtragem e liberação de resíduos em paralelo com enchimento e maturação
+		\item Sensor de nível abaixo do filtro.
+		\end{itemize}
+	\end{block}
+\end{frame}
+%------------------------------------------------
+\subsection{Tabela de Designação}
+\begin{frame}
+	\begin{block}{Tabela de Entradas}
+	\begin{table}[H]
+	\centering
+	\begin{tabular}{|  p{0.15\linewidth} | p{0.55\linewidth} | p{0.15\linewidth} | }
+		\hline
+		Entrada & Utilidade & Posição\\
+		\hline
+		$S_{bm}$ & Sensor de volume baixo no tanque de maturação & $\%I1.0$ \\
+		$S_t$ & Sensor de temperatura no tanque de maturação & $\%MD1$ \\
+		$S_{bf}$ & Sensor de volume baixo do filtro & $\%I1.1$ \\
+		\hline
+		\end{tabular}
+	\end{table}
+	\end{block}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+	\begin{block}{Tabela de Saídas}
+		\begin{table}[H]
+			\centering
+			\begin{tabular}{|  p{0.15\linewidth} | p{0.55\linewidth} | p{0.15\linewidth} | }
+				\hline
+				Atuador & Utilidade & Posição\\
+				\hline
+				$V_{cv}$ & Acionamento da válvula da cerveja verde & $\%Q6.3$ \\
+				$V_{cm}$ & Acionamento da válvula da cerveja maturada & $\%Q6.2$ \\
+				$V_{fr}$ & Acionamento da válvula de fluido refrigerante & $\%Q7.0$ \\
+				$V_{td}$ & Acionamento da válvula de terra diatomácea & $\%Q7.1$ \\
+				$V_r$ & Acionamento da válvula de descarte & $\%Q7.2$ \\
+				\hline
+			\end{tabular}
+		\end{table}
+	\end{block}
+\end{frame}
+%------------------------------------------------
+\subsection{Diagrama Grafcet}
+\begin{frame}
+	\frametitle{Diagrama Grafcet}
+	\begin{figure}[H]
+		\centering
+		\scalebox{.6}{\begin{tikzpicture}
+		\EtapeInit[0,0]{0}
+		\Transition[VX0]{0}
+		\DivET{T0}{-7.5/L10,7.5/L20}
+		\Etape[VL10]{10}
+		\Transition[VX10]{10}
+		\EtapeEncapsulante[VT10]{20}
+		\SequenceEE[VL20]{11}{21}
+		\ConvET[7.5]{X20}{X21}{br3}
+		\Transition[br3]{br3}
+		\Etape[VTbr3]{4}
+		\Transition[VX4]{4}
+		\LienRetour[10]{T4}{X0}
+		\ActionX{X10}{$V_cv$, inicia $timer_1$}
+		\ActionActiv{X10}
+		\ActionX{X20}{inicia $timer_2$}
+		\ActionActiv{X20}
+		\ActionX{X21}{$V_r$}
+		\ActionX{X4}{$V_{cm}$,$V_{td}$}
+		\Recept{T0}{$\overline{S_{bm}}\cdot Start$}
+		\Recept{T10}{$timer_1 > 10m$}
+		\Recept{Tbr3}{$timer_2 > 2h$}
+		\Recept{T11}{$\overline{S_{bf}}$}
+		\Recept{T4}{$\overline{S_{bm}}$}
+		
+		\begin{Encap}[nom]{6.0,-1.5}{20}{Refrigeração}
+		\Etape[0,0]{200}
+		\Transition[VX200]{200}
+		\Etape[VT200]{300}
+		\Transition[VX300]{300}
+		\LienRetour{T300}{X200}
+		\LienActivation{X200}
+		\ActionX{X300}{$V_r$}
+		\Recept{T200}{$S_t \geq 5ºC$}
+		\Recept{T300}{$S_t \le -5ºC$}
+		\end{Encap}
+		
+		\end{tikzpicture}}
+		\label{fig:grafcet}
+	\end{figure}
+\end{frame}
+
+\section{Implementação}
+\subsection{IHM e Operação}
+\begin{frame}
+	\frametitle{IHM e Operação}
+	\begin{figure}[H]
+		\centering
+		\includegraphics [width=0.6\linewidth]{ihmsmall.pdf}
+		\caption {Interface Homem-Máquina do sistema de maturação e filtragem}
+		\label{fig:ihm}
+	\end{figure}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Referências}
+\footnotesize{
+\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
+\bibitem{roteiro4} MASTELARI, N. ``Maturação e Filtração"
+\end{thebibliography}
+}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\Huge{\centerline{Partiu Bar?}}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document} 
