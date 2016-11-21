@@ -1,4 +1,4 @@
-\documentclass[twoside,twocolumn,12pt]{paper}
+\documentclass[twoside,twocolumn, 12pt]{paper}
 
 %% Escrevendo em português:
 \usepackage[brazil]{babel}
@@ -9,7 +9,7 @@
 \usepackage{setspace}
 \usepackage{graphicx}
 \usepackage{color}
-\usepackage{caption}
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption}
 \usepackage{subcaption}
 \usepackage{float}
 \usepackage{amsmath}
@@ -17,6 +17,9 @@
 \usepackage{amssymb}
 \usepackage{grafcet}
 \usepackage{pdfpages}
+
+\usepackage{enumitem} % Customized lists
+\setlist[itemize]{noitemsep} % Make itemize lists more compact
 %----------------------------
 
 
@@ -39,14 +42,58 @@
 \newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
 \newcommand{\tab}[1]{\hspace{.2\textwidth}\rlap{#1}}
 
+
+\usepackage{titling} % Customizing the title section
+
+\usepackage{hyperref} % For hyperlinks in the PDF
+\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+\usepackage{titlesec} % Allows customization of titles
+\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+\renewcommand\thesubsection{\Alph{subsection}} % roman numerals for subsections
+\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\setlength{\droptitle}{-4\baselineskip} % Move the title up
+
+\pretitle{\begin{center}\Huge\bfseries} % Article title formatting
+	\posttitle{\end{center}} % Article title closing formatting
+\title{Automação no Processo de Fabricação de Cerveja\\ 
+	\large Etapas de Maturação e Filtração} % Article title
+\author{%
+	\textsc{Daniel D. R. Oliveira}\\[1ex]
+	\normalsize Faculdade de Engenharia Mecânica\\
+	\normalsize Universidade Estadual de Campinas\\
+	\and
+	\textsc{Marcelli Tiemi Kian}\\[1ex]
+	\normalsize Faculdade de Engenharia Mecânica\\
+	\normalsize Universidade Estadual de Campinas\\
+	\and
+	\textsc{Vinicius Ragazi David}\\[1ex]
+	\normalsize Faculdade de Engenharia Mecânica\\
+	\normalsize Universidade Estadual de Campinas\\
+}
+\date{\today} % Leave empty to omit a date
+\renewcommand{\maketitlehookd}{%
+	\begin{abstract}
+		\noindent Esse artigo trata de uma abordagem para a automação do processo de maturação e filtragem de cerveja. Ele comtempla o aspecto funcional e implementação do problema em CLP e software supervisório.\\
+		
+		Palavras Chaves: Controle de Temperatura, Acionamento de válvulas, CLP, Software Supervisório, Grafcet
+	\end{abstract}
+}
+
 %%%%%%%%%%%%%%%%
 \begin{document}
 	%%%%%%%%%%%%%%%%
 	\input{capa.tex}
-	
-	\tableofcontents
-	\listoffigures
-	\listoftables
+	\maketitle
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Descrição do Problema}
@@ -89,7 +136,7 @@
 	
 	A figura \ref{fig:grafcet} mostra um diagrama grafcet da nossa implementação do processo.
 	
-	\begin{figure}
+	\begin{figure*}[t]
 		\centering
 		\begin{tikzpicture}
 			\EtapeInit[0,0]{0}
@@ -104,7 +151,7 @@
 			\Etape[VTbr3]{4}
 			\Transition[VX4]{4}
 			\LienRetour[10]{T4}{X0}
-			\ActionX{X10}{$V_cv$, inicia $timer_1$}
+			\ActionX{X10}{$V_{cv}$, inicia $timer_1$}
 			\ActionActiv{X10}
 			\ActionX{X20}{inicia $timer_2$}
 			\ActionActiv{X20}
@@ -127,11 +174,14 @@
 			\Recept{T200}{$S_t \geq 5ºC$}
 			\Recept{T300}{$S_t \le -5ºC$}
 			\end{Encap}
-		
+			
+			\draw[red,thick,dashed] (-3.75,-1.75) -- (2,-1.75) -- (2, -5.4) -- (-3.75, -5.4) -- cycle;
+			
+			\draw[red,thick,dashed] (2.3,-1.75) -- (5.5,-1.75) -- (5.5, -5.4) -- (5.5, -8.7) -- (-1, -8.7) -- (-1, -6) -- (2.3, -6) -- cycle;
 		\end{tikzpicture}
 		\caption{Diagrama grafcet do projeto}
 		\label{fig:grafcet}
-	\end{figure}
+	\end{figure*}
 	
 	\subsection{Modo Automático}
 	O modo automático consiste na ciclagem automática entre os estados do sistema. Este é o modo padrão de operação do sistema e não necessita de um funcionário presente para fazer as transições. Quando o sistema está na posição home e no modo automático, este aguarda que seja pressionada a chave Iniciar para começar sua execução. Caso este esteja no modo homming e seja transferido para o automático, ele continuará seu ciclo normalmente até que volte para home e então aguardará o botão Iniciar para entrar no modo automático. A implementação de tal lógica pode ser vista na seção \ref{sec:ladder} nas redes 2 a 4. 
@@ -184,8 +234,9 @@
 	\end{figure}
 
 \section {Tabela de designação}
-\begin{table}
+\begin{table*}[b]
 	\caption{Tabela de Entradas}
+	\label{tab:in}
 	\centering
 	\begin{tabular}{|  p{2cm} | p{10cm} | p{2cm} | }
 		\hline
@@ -196,11 +247,12 @@
 		$S_{bf}$ & sensor de volume baixo do filtro & $\%I1.1$ \\
 		\hline
 	\end{tabular}
-\end{table}
+\end{table*}
 
 
-\begin{table}
+\begin{table*}[b]
 	\caption{Tabela de Saídas}
+	\label{tab:out}
 	\centering
 	\begin{tabular}{|  p{2cm} | p{10cm} | p{2cm} | }
 		\hline
@@ -213,11 +265,12 @@
 		$V_r$ & acionamento da válvula de descarte & $\%Q7.2$ \\
  		\hline
 	\end{tabular}
-\end{table}
+\end{table*}
 
 
-\begin{table}
+\begin{table*}[b]
 	\caption{Tabela de Temporizadores}
+	\label{tab:temp}
 	\centering
 	\begin{tabular}{|  p{2cm} | p{10cm} | p{2cm} | }
 		\hline
@@ -227,9 +280,9 @@
 		$timer_2$ & temporizador da maturação da cerveja verde & $\%M5.6$ \\
 		 \hline
 	\end{tabular}
-\end{table}
+\end{table*}
 
-A tabela completa de variáveis do sistema pode ser vista no apêndice \ref{apx:table}
+As tabelas \ref{tab:in}, \ref{tab:out} e \ref{tab:temp} apresentam as entradas, saídas e temporizadores do sistema. A tabela completa de variáveis pode ser vista no apêndice \ref{apx:table}
 
 \section {Implementação do sistema}
 \label{sec:ladder}
