@@ -97,6 +97,7 @@
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Descrição do Problema}
+	O mercado de fabricação de cerveja no Brasil está crescendo de maneira acelerada, alguns dos sintomas que evidenciam esse crescimento são o surgimento de diversas novas marcas e a popularização das cervejas artesanais. Nesse trabalho, escolhemos abordar parte desse processo pois ele representa um tópico atual que aborda dois grandes problemas da automação: o controle de temperatura e o acionamento de válvulas.
 	No processo de fabricação da cerveja, logo após a fermentação, é comum deixar que a bebida passe por uma "fermentação secundária" conhecida como maturação. Durante a maturação ocorre a redução na concentração de ácido sulfídrico, de acetaldeído e de diacetil, produtos da fermentação que afetam o sabor da cerveja. Esse processo também é importante pois nele ocorre a clarificação da cerveja através da precipitação das leveduras e de proteínas que dão um aspecto turvo ao produto. É importante controlar a temperatura e o tempo de maturação de maneira a garantir as características desejadas para a cerveja, tipos diferentes de cerveja precisam ser maturadas em temperaturas e por durações diferentes. A clarificação da cerveja pode ser completada com um processo de filtração pós maturação a fim de remover as partículas em suspensão.
 	
 	\section{Descrição Técnica do Processo}
@@ -128,7 +129,7 @@
 	
 	\section {Análise do Projeto}
 	\label{sec:analise}
-	Para a primeira etapa do projeto nós acrescentamos um sensor de nível baixo no taque do maturador, afim de verificar que este está de fato vazio antes de preenchê-lo com cerveja verde. Como não existe perigo de que muita cerveja verde seja fornecida para o tanque (uma vez que a quantidade disponível é limitada pelo tamanho do tanque anterior no processo), o procedimento é controlado através de um timer, estimamos que 10 minutos seja tempo mais que suficiente para preencher o tanque. Deixamos então a cerveja maturar por 2 horas, controlando a sua temperatura através de sensores.
+	Para a primeira etapa do projeto nós acrescentamos um sensor de nível baixo no taque do maturador, afim de verificar que este está de fato vazio antes de preenchê-lo com cerveja verde. Como não existe perigo de que muita cerveja verde seja fornecida para o tanque (uma vez que a quantidade disponível é limitada pelo tamanho do tanque anterior no processo), o procedimento é controlado através de um timer, estimamos que 10 minutos seja tempo mais que suficiente para preencher o tanque. Deixamos então a cerveja maturar por 2 horas, controlando a sua temperatura através de sensores. A temperatura deverá se manter no intervalo entre $-5$ e $5^\circ C$ 
 	
 	Enquanto o  tanque está sendo preenchido e durante o processo de maturação da cerveja, podemos realizar de maneira paralela a liberação dos resíduos do filtro, contanto que não exista mais cerveja maturada para ser filtrada, verificamos isso através de um sensor colocado um pouco abaixo do nível do filtro. Abrimos a válvula para liberação dos resíduos e a deixamos aberta até que a cerveja no maturador acabe de maturar, como a maturação é um processo lento, teremos tempo de sobra para esvaziar o filtro.
 	
