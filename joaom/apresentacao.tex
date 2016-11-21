@@ -102,7 +102,7 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Projeto Final]{Maturação no processo de Fabricação de Cerveja} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Projeto Final]{Maturação e Filtragem no processo de Fabricação de Cerveja} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Daniel Dello Russo,\\ Marcelli Tiemi Kian,\\ Vinicius David} % Your name
 \institute[FEM] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -127,6 +127,18 @@ Universidade Estadual de Campinas \\ % Your institution for the title page
 %----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
 %----------------------------------------------------------------------------------------
+
+\section{Descrição do Problema}
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Maturação}
+	\begin{itemize}
+		\item "Fermentação Secundária"
+		\item Redução na concentração de produtos indesejados da fermentação
+		\item Clarificação
+		\item Temperatura e tempo variáveis
+	\end{itemize}
+\end{frame}
 
 %------------------------------------------------
 \section{Descrição Técnica do Processo} 
@@ -222,59 +234,76 @@ Universidade Estadual de Campinas \\ % Your institution for the title page
 	\frametitle{Diagrama Grafcet}
 	\begin{figure}[H]
 		\centering
-		\scalebox{.6}{\begin{tikzpicture}
-		\EtapeInit[0,0]{0}
-		\Transition[VX0]{0}
-		\DivET{T0}{-7.5/L10,7.5/L20}
-		\Etape[VL10]{10}
-		\Transition[VX10]{10}
-		\EtapeEncapsulante[VT10]{20}
-		\SequenceEE[VL20]{11}{21}
-		\ConvET[7.5]{X20}{X21}{br3}
-		\Transition[br3]{br3}
-		\Etape[VTbr3]{4}
-		\Transition[VX4]{4}
-		\LienRetour[10]{T4}{X0}
-		\ActionX{X10}{$V_cv$, inicia $timer_1$}
-		\ActionActiv{X10}
-		\ActionX{X20}{inicia $timer_2$}
-		\ActionActiv{X20}
-		\ActionX{X21}{$V_r$}
-		\ActionX{X4}{$V_{cm}$,$V_{td}$}
-		\Recept{T0}{$\overline{S_{bm}}\cdot Start$}
-		\Recept{T10}{$timer_1 > 10m$}
-		\Recept{Tbr3}{$timer_2 > 2h$}
-		\Recept{T11}{$\overline{S_{bf}}$}
-		\Recept{T4}{$\overline{S_{bm}}$}
-		
-		\begin{Encap}[nom]{6.0,-1.5}{20}{Refrigeração}
-		\Etape[0,0]{200}
-		\Transition[VX200]{200}
-		\Etape[VT200]{300}
-		\Transition[VX300]{300}
-		\LienRetour{T300}{X200}
-		\LienActivation{X200}
-		\ActionX{X300}{$V_r$}
-		\Recept{T200}{$S_t \geq 5ºC$}
-		\Recept{T300}{$S_t \le -5ºC$}
-		\end{Encap}
-		
-		\end{tikzpicture}}
+		\scalebox{.6}{		
+			\begin{tikzpicture}
+			\EtapeInit[0,0]{0}
+			\Transition[VX0]{0}
+			\DivET{T0}{-7.5/L10,7.5/L20}
+			\Etape[VL10]{10}
+			\Transition[VX10]{10}
+			\EtapeEncapsulante[VT10]{20}
+			\SequenceEE[VL20]{11}{21}
+			\ConvET[7.5]{X20}{X21}{br3}
+			\Transition[br3]{br3}
+			\Etape[VTbr3]{4}
+			\Transition[VX4]{4}
+			\LienRetour[10]{T4}{X0}
+			\ActionX{X10}{$V_{cv}$, inicia $timer_1$}
+			\ActionActiv{X10}
+			\ActionX{X20}{inicia $timer_2$}
+			\ActionActiv{X20}
+			\ActionX{X21}{$V_r$}
+			\ActionX{X4}{$V_{cm}$,$V_{td}$}
+			\Recept{T0}{$\overline{S_{bm}}\cdot Start$}
+			\Recept{T10}{$timer_1 > 10m$}
+			\Recept{Tbr3}{$timer_2 > 2h$}
+			\Recept{T11}{$\overline{S_{bf}}$}
+			\Recept{T4}{$\overline{S_{bm}}$}
+			
+			\begin{Encap}[nom]{6.0,-1.5}{20}{Refrigeração}
+			\Etape[0,0]{200}
+			\Transition[VX200]{200}
+			\Etape[VT200]{300}
+			\Transition[VX300]{300}
+			\LienRetour{T300}{X200}
+			\LienActivation{X200}
+			\ActionX{X300}{$V_r$}
+			\Recept{T200}{$S_t \geq 5ºC$}
+			\Recept{T300}{$S_t \le -5ºC$}
+			\end{Encap}
+			
+			\draw[red,thick,dashed] (-3.75,-1.75) -- (2,-1.75) -- (2, -5.4) -- (-3.75, -5.4) -- cycle;
+			
+			\draw[red,thick,dashed] (2.3,-1.75) -- (5.5,-1.75) -- (5.5, -5.4) -- (5.5, -8.7) -- (-1, -8.7) -- (-1, -6) -- (2.3, -6) -- cycle;
+			\end{tikzpicture}
+		}
 		\label{fig:grafcet}
 	\end{figure}
 \end{frame}
 
 \section{Implementação}
-\subsection{IHM e Operação}
+\subsection{IHM: Operação}
 \begin{frame}
-	\frametitle{IHM e Operação}
+	\frametitle{IHM: Operação}
 	\begin{figure}[H]
 		\centering
 		\includegraphics [width=0.6\linewidth]{ihmsmall.pdf}
-		\caption {Interface Homem-Máquina do sistema de maturação e filtragem}
+		\caption {Interface Homem-Máquina do sistema de maturação e filtragem (tela de operação)}
 		\label{fig:ihm}
 	\end{figure}
 \end{frame}
+
+\subsection{IHM: Manutenção}
+\begin{frame}
+	\frametitle{IHM: Manutenção}
+	\begin{figure}[H]
+		\centering
+		\includegraphics [width=0.6\linewidth]{screen1small.pdf}
+		\caption {Interface Homem-Máquina do sistema de maturação e filtragem (tela de manutenção)}
+		\label{fig:screen1}
+	\end{figure}
+\end{frame}
+
 
 %------------------------------------------------
 
@@ -282,7 +311,9 @@ Universidade Estadual de Campinas \\ % Your institution for the title page
 \frametitle{Referências}
 \footnotesize{
 \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-\bibitem{roteiro4} MASTELARI, N. ``Maturação e Filtração"
+	\bibitem{sitelegal}  PICCINI, A. R., MORESCO C. e MUNHOS, L. \url{http://www.ufrgs.br/alimentus1/feira/prcerea/cerveja/fluxo.htm}
+	
+	\bibitem{roteiro4} MASTELARI, N. ``Maturação e Filtração"
 \end{thebibliography}
 }
 \end{frame}
