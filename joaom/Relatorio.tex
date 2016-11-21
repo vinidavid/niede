@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[twoside,twocolumn,12pt]{paper}
 
 %% Escrevendo em português:
 \usepackage[brazil]{babel}
@@ -48,8 +48,6 @@
 	\listoffigures
 	\listoftables
 	
-	\clearpage
-	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Descrição do Problema}
 	No processo de fabricação da cerveja, logo após a fermentação, é comum deixar que a bebida passe por uma "fermentação secundária" conhecida como maturação. Durante a maturação ocorre a redução na concentração de ácido sulfídrico, de acetaldeído e de diacetil, produtos da fermentação que afetam o sabor da cerveja. Esse processo também é importante pois nele ocorre a clarificação da cerveja através da precipitação das leveduras e de proteínas que dão um aspecto turvo ao produto. É importante controlar a temperatura e o tempo de maturação de maneira a garantir as características desejadas para a cerveja, tipos diferentes de cerveja precisam ser maturadas em temperaturas e por durações diferentes. A clarificação da cerveja pode ser completada com um processo de filtração pós maturação a fim de remover as partículas em suspensão.
@@ -58,9 +56,9 @@
 	
 	Este relatório consiste na descrição da solução encontrada para o problema da maturação e filtragem da produção de cerveja. O processo começa após a fermentação da cerveja verde (pós fermentação) que é mandada para tanques de maturação como o da figura \ref{fig:maturador} (válvula $V_{cv}$ e $timer_1$). No tanque a cerveja verde permanece no taque por um tempo variado ($timer2$) com controle constante de sua temperatura, esta necessitando estar em um intervalo específico de temperaturas. Este controle de temperatura será feito com base no acionamento do fluido refrigerante ($V_{fr}$) e em um sensor de temperatura ($S_t$).
 	
-	\begin{figure}[H]
+	\begin{figure}
 		\centering
-		\includegraphics [width=4in]{tanque.png}
+		\includegraphics [width=\columnwidth]{tanque.png}
 		\caption {Tanque de maturação da cerveja verde.}
 		\label{fig:maturador}
 	\end{figure}
@@ -72,9 +70,9 @@
 	
 	Tanto a válvula de despejo da cerveja maturada quanto a da terra diatomácea dependem do sensor de volume do tanque de maturação ($S_{bm}$).
 	
-	\begin{figure}[H]
+	\begin{figure}
 		\centering
-		\includegraphics [width=4in]{filtro.png}
+		\includegraphics [width=\columnwidth]{filtro.png}
 		\caption {Filtro da cerveja maturada}
 		\label{fig:filtro}
 	\end{figure}
@@ -91,7 +89,7 @@
 	
 	A figura \ref{fig:grafcet} mostra um diagrama grafcet da nossa implementação do processo.
 	
-	\begin{figure}[H]
+	\begin{figure}
 		\centering
 		\begin{tikzpicture}
 			\EtapeInit[0,0]{0}
@@ -178,15 +176,15 @@
 	
 	Os detalhes da implementação da IHM podem ser vistas no apêndice \ref{apx:ihm}.
 	
-	\begin{figure}[H]
+	\begin{figure}
 		\centering
-		\includegraphics [width=0.8\linewidth]{ihmsmall.pdf}
+		\includegraphics [width=0.8\columnwidth]{ihmsmall.pdf}
 		\caption{IHM (Interface Homem-Máquina) do sistema}
 		\label{fig:ihm}
 	\end{figure}
 
 \section {Tabela de designação}
-\begin{table}[H]
+\begin{table}
 	\caption{Tabela de Entradas}
 	\centering
 	\begin{tabular}{|  p{2cm} | p{10cm} | p{2cm} | }
@@ -201,7 +199,7 @@
 \end{table}
 
 
-\begin{table}[H]
+\begin{table}
 	\caption{Tabela de Saídas}
 	\centering
 	\begin{tabular}{|  p{2cm} | p{10cm} | p{2cm} | }
@@ -218,7 +216,7 @@
 \end{table}
 
 
-\begin{table}[H]
+\begin{table}
 	\caption{Tabela de Temporizadores}
 	\centering
 	\begin{tabular}{|  p{2cm} | p{10cm} | p{2cm} | }
@@ -235,9 +233,7 @@ A tabela completa de variáveis do sistema pode ser vista no apêndice \ref{apx:
 
 \section {Implementação do sistema}
 \label{sec:ladder}
-Implementamos o sistema em ladder seguindo o grafcet apresentado na figura \ref{fig:grafcet} e todas as considerações feitas na seção \ref{sec:analise}, para facilitar as demonstrações e o processo de depuração, nós diminuímos o tempo de enchimento do tanque para 5 segundos e o tempo de maturação da cerveja para 25 segundos. A implementação completa pode ser vista a seguir.
-
-\includepdf[pages={-}]{ladder.pdf}
+Implementamos o sistema em ladder seguindo o grafcet apresentado na figura \ref{fig:grafcet} e todas as considerações feitas na seção \ref{sec:analise}, para facilitar as demonstrações e o processo de depuração, nós diminuímos o tempo de enchimento do tanque para 5 segundos e o tempo de maturação da cerveja para 25 segundos. A implementação completa pode ser vista no apêndice \ref{apx:ladder}.
 
 \section {Conclusões}
 %TODO Concluir
@@ -245,18 +241,24 @@ O processo de produção de cerveja é grande e complexo, porém ao abordar uma 
 
 Apesar de termos abordado um problema real, a solução encontrada foi mais simples do que o esperávamos. Isso pode ser observado no fato da solução implementada possuir menos de 10 estados e apenas 3 entradas e 5 saídas. Devemos ressaltar que para elaborar esse projeto tivemos que fazer algumas suposições sobre o sistema real. Nem todas as informações necessárias estavam no roteiro. Decisões como o tempo necessário para ativar os alarmes e a vazão de cada válvula necessitam de um estudo mais detalhado do sistema e devem ser revisadas no caso de uma implementação física.
 \newpage
+\clearpage
 \appendix
 \section{Apêndices}
 \includepdf[scale=0.6,pages={1},pagecommand=\subsection{Tabela de Variáveis}]{table.pdf}
 \label{apx:table}
 \includepdf[scale=0.6, pages={2-}]{table.pdf}
+\includepdf[scale=0.6, pages={1}, pagecommand=\subsection{Implementação Ladder}]{ladder.pdf}
+\label{apx:ladder}
+\includepdf[scale=0.6, pages={2-}]{ladder.pdf}
 \includepdf[scale=0.68,pages={1},pagecommand=\subsection{Detalhes da IHM}]{ihm.pdf}
 \label{apx:ihm}
 \includepdf[scale=0.68,pages={2-}]{ihm.pdf}
 
-\begin{thebibliography}{5}
-	% LINK BOM http://www.ufrgs.br/alimentus1/feira/prcerea/cerveja/fluxo.htm
-	\bibitem{roteiro4} MASTELARI, N. ``Maturação e Filtração"
-\end{thebibliography}
+\twocolumn[{
+	\begin{thebibliography}{5}
+		% LINK BOM http://www.ufrgs.br/alimentus1/feira/prcerea/cerveja/fluxo.htm
+		\bibitem{roteiro4} MASTELARI, N. ``Maturação e Filtração"
+	\end{thebibliography}
+}]
 
 \end{document}
